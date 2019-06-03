@@ -11,7 +11,7 @@ opts.add_experimental_option("detach", True)
 driver = webdriver.Chrome(DRIVER_PATH, chrome_options=opts)
 
 login(driver)
-download(driver)
+download(driver, 4) # 다운로드할 페이지를 선택합니다.
 
 
 

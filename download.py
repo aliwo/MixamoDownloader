@@ -22,6 +22,7 @@ def download_page(driver):
 
     for i, po in enumerate(product_overlays):
         click_po(po)
+        driver.implicitly_wait(1) # po 를 선택하고 download 버튼이 바뀔 때 까지 1초 기다려 줍니다. (사람이 누르는 것과 최대한 흡사하게)
         driver.execute_script('arguments[0].click();', download_button)
 
         # 60 프레임, without skin 을 선택합니다.
@@ -49,14 +50,10 @@ def download_page(driver):
 
 
 
-def download(driver):
-
-    # download_page(driver)
-
-    for i in range(2, 53):
-        driver.get('https://www.mixamo.com/#/?page={}'.format(i))
-        driver.implicitly_wait(3)
-        download_page(driver)
+def download(driver, page):
+    driver.get('https://www.mixamo.com/#/?page={}'.format(page))
+    driver.implicitly_wait(3)
+    download_page(driver)
 
 
 
